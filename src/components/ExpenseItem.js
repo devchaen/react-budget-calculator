@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { BiEditAlt, BiSave, BiXCircle } from "react-icons/bi";
 
 const ExpenseItem = ({ id, text, amount, expenseList, setExpenseList }) => {
+  // 관리 State : isEditing, editedText, editedAmount
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(text);
   const [editedAmount, setEditedAmount] = useState(amount);
 
+  // 개별 지출 항목 수정
   const handleEdit = (e) => {
     e.preventDefault();
 
@@ -22,12 +24,14 @@ const ExpenseItem = ({ id, text, amount, expenseList, setExpenseList }) => {
     setIsEditing(false);
   };
 
+  // 개별 지출 항목 삭제
   const deleteItem = (id) => {
     const nextList = expenseList.filter((item) => item.id !== id);
     setExpenseList(nextList);
     localStorage.setItem("expenseList", JSON.stringify(nextList));
   };
 
+  // 수정하지 않을 때 Item
   if (!isEditing) {
     return (
       <div className=" flex items-center justify-between w-full px-4 py-1 my-2 text-gray-600 border rounded">
@@ -47,7 +51,9 @@ const ExpenseItem = ({ id, text, amount, expenseList, setExpenseList }) => {
         </div>
       </div>
     );
-  } else {
+  }
+  // 수정 중일 때 Item
+  else {
     return (
       <form
         onSubmit={handleEdit}

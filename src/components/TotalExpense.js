@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 const TotalExpense = ({ expenseList, sumExpense, setSumExpense }) => {
+  // 총 지출액 계산 -> setSumExpense()
   useEffect(() => {
     const sumExpense = expenseList.reduce((pre, cur) => {
       return Number(pre) + Number(cur.amount);

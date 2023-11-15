@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 const Remaining = ({ expenseList, budget, sumExpense }) => {
+  // 관리 State : remaining(초기값 = budget)
   const [remaining, setRemaining] = useState(budget);
 
+  //expenseList, budget, sumExpense 업데이트 시 남은 예산 계산
   useEffect(() => {
-    if (isNaN(budget - sumExpense)) {
-      setRemaining(budget);
-    } else {
-      setRemaining(Number(budget) - Number(sumExpense));
-    }
+    setRemaining(Number(budget) - Number(sumExpense));
   }, [expenseList, budget, sumExpense]);
+
   return (
     <div className="w-full px-1">
       <p className="ml-4 text-purple-950 text-lg font-lightbold">남은 예산</p>

@@ -6,15 +6,17 @@ import TotalExpense from "./components/TotalExpense";
 import Remaining from "./components/Remaining";
 import { BiCalculator } from "react-icons/bi";
 
+// localStorage에 저장된 지출 내역
 const initialExpenseList = localStorage.getItem("expenseList")
   ? JSON.parse(localStorage.getItem("expenseList"))
   : [];
-
+//localStorage에 저장된 예산 금액
 const initialBudget = localStorage.getItem("budget")
   ? JSON.parse(localStorage.getItem("budget"))
   : 0;
 
 const App = () => {
+  // 관리 State : expenseList, budget, sumExpense
   const [expenseList, setExpenseList] = useState(initialExpenseList);
   const [budget, setBudget] = useState(Number(initialBudget));
   const [sumExpense, setSumExpense] = useState(0);

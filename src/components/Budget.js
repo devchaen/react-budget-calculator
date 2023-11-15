@@ -1,21 +1,21 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { BiEditAlt, BiSave } from "react-icons/bi";
 
 const Budget = ({ budget, setBudget }) => {
   const inputRef = useRef(null);
 
-  //   console.log("budget함수 호출");
-  // 예산 설정 : edit 버튼 클릭 시 input 활성화
+  // 예산 수정 : edit 버튼 클릭 시 input 활성화
   const onBudgetEdit = () => {
     inputRef.current.removeAttribute("disabled");
     inputRef.current.focus();
   };
 
-  // 예산 설정 : save 버튼 클릭 시 예산 저장, input 비활성화
+  // 예산 금액 저장
   const saveBudget = (e) => {
     e.preventDefault();
 
-    console.log(e.target.value);
+    // b입력값이 없어 undefined인 경우 -> 0으로 저장
+    // 그 외 -> budget을 localStorage에 저장, input 비활성화
     if (budget === undefined) {
       setBudget(0);
       localStorage.setItem("budget", 0);

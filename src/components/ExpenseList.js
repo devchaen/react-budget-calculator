@@ -2,10 +2,12 @@ import React from "react";
 import ExpenseItem from "./ExpenseItem";
 
 const ExpenseList = ({ expenseList, setExpenseList }) => {
+  // Reset 버튼 클릭 시 : expenseList 초기화
   const resetAll = () => {
     setExpenseList([]);
     localStorage.setItem("expenseList", []);
   };
+
   return (
     <div>
       <div className="flex items-center justify-between w-full px-4 py-1 my-2 bg-gray-100 text-gray-600 border rounded">
