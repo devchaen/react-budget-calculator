@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { BiEditAlt, BiSave } from "react-icons/bi";
 
 const Budget = ({ budget, setBudget }) => {

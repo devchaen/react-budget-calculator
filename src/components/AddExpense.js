@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const AddExpense = ({ expenseList, setExpenseList }) => {
+  const textRef = useRef(null);
+
+  // 관리 State: text, amount
   const [text, setText] = useState("");
   const [amount, setAmount] = useState("");
 
-  const textRef = useRef(null);
-
-  useEffect(() => {});
+  // 새로운 지출 내역 추가
   const addExpense = (e) => {
     e.preventDefault();
 
@@ -25,9 +26,13 @@ const AddExpense = ({ expenseList, setExpenseList }) => {
       setText("");
       setAmount("");
       textRef.current.focus();
-    } else if (!text) {
+    }
+    // 지출 내역 text를 입력하지 않은 경우
+    else if (!text) {
       alert("지출 내역을 입력하세요.");
-    } else if (!amount) {
+    }
+    // 금액을 입력하지 않은 경우
+    else if (!amount) {
       alert("지출 금액을 입력하세요.");
     }
   };
